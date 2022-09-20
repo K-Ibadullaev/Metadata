@@ -1,0 +1,112 @@
+{
+  "experimentalConditions": {
+    "description": "A summary of the experimental conditions. Include sufficient detail to facilitate search and discovery.",
+    "type": "object",
+    "required": [
+      "recording",
+      "ride",
+      "testPerson"
+      ],
+    "properties": {    
+      "recording": {
+          "description": "",
+          "type": "object",
+          "required":[
+	    "testApp",
+	    "testDevice",
+	    "testDeviceFixture"
+            ],
+          "properties": {
+            "testApp": {
+              "description": "Test app used.",
+              "type": "string",
+              "enum": [
+                "Physics Toolbox Suite by Vieyra Software",
+                "Bunny Rollercoaster Physics App"
+               ]
+            },
+            "testAppVersion": {
+              "description": "Version of test app (free text input). Full semantic versioning input preferred: Major.minor.bugfix",
+              "type": "string",
+              "minLength": 1
+            },
+            "testDevice": {
+              "description": "Test device used.",
+              "type": "string",
+              "enum": [
+                "iPhone X",
+                "iPhone 6",
+                "iPhone 6s",
+                "other"
+              ]
+            },
+            "testDeviceFixture": {
+              "description": "Test device fixture.",
+              "type": "string",
+              "enum": [
+                "left upper arm",
+                "right upper arm",
+                "mouth fixture device",
+                "other"
+              ]
+            }
+          }   
+        },      
+      "ride": {
+        "description": "Properties of the ride.",
+        "type": "object",
+        "required": [
+          "rideType",
+          "rideName"
+        ],
+        "properties": {
+          "rideType": {
+            "description": "Ride type.",
+            "type": "string",
+            "enum": [
+              "roller coaster",
+              "water slide",
+              "bob sled"
+            ]
+          },
+          "rideName": {
+            "description": "Official name of the ride.",
+            "type": "string",
+            "minLength": 3
+          },
+          "location": {
+            "description": "City and State in which ride is located.",
+            "type": "string",
+            "minLength": 10
+          }
+        }
+      }
+    },
+    "testPerson": {
+      "description": "Properties of person carrying the test device.",
+      "type": "object",
+      "required": [
+        "height",
+        "sex"
+      ],
+      "properties": {
+        "height": {
+          "description": "Height of test person in cm (SI unit of length).",
+          "type": "number",
+          "minimum": 120,
+          "exclusiveMaximum": 220
+        },
+        "sex": {
+          "description": "Sex of test person.",
+          "type": "string",
+          "enum": [
+            "female",
+            "male",
+            "non-binary",
+            "not disclosed"
+          ]
+        }
+      }
+    }
+  }
+}
